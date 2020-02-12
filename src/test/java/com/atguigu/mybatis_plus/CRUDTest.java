@@ -240,4 +240,28 @@ public class CRUDTest {
         List<User> users = userMapper.selectList(null);
         users.forEach(System.out::println);
     }
+
+    /**
+     * 测试 性能分析插件
+     * Time：5 ms - ID：com.atguigu.mybatis_plus.mapper.UserMapper.insert
+     * Execute SQL：
+     *     INSERT
+     *     INTO
+     *         user
+     *         ( id, create_time, update_time, name, age, email )
+     *     VALUES
+     *         ( 1227588144103288833, null, '2020-02-12 21:39:55.697', '我是Helen', 18, 'helen@sina.com' )
+     */
+    @Test
+    public void testPerformance() {
+        User user = new User();
+        user.setName("我是Helen");
+        user.setEmail("helen@sina.com");
+        user.setAge(18);
+        userMapper.insert(user);
+    }
+
+
+
+
 }
